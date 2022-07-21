@@ -8,6 +8,6 @@ class Classroom
 
   def add_stds(std)
     @students.push(std)
-    student.Classroom = self
+    student.classroom = self
   end
 end
