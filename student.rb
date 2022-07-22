@@ -17,5 +17,3 @@ class Student < Person
   end
 end
 
-tch = Student.new(30, 'CS')
-p tch.age
