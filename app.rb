@@ -96,7 +96,7 @@ class App
       create_student
     when 2
       create_teacher
-    else 
+    else
       p 'Choose between 1 and 2'
     end
   end
