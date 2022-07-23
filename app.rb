@@ -6,8 +6,9 @@ require_relative('./rental')
 
 class App
   def initialize
-    @people = []
     @books = []
+    @people = []
+    @rentals = []
   end
 
   def options
@@ -95,6 +96,8 @@ class App
       create_student
     when 2
       create_teacher
+    else 
+      p 'Choose between 1 and 2'
     end
   end
 
