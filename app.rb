@@ -1,7 +1,8 @@
-require_relative('./student') 
-require_relative('./teacher') 
-require_relative('./books') 
-require_relative('./rental') 
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/ClassLength
+require_relative('./student')
+require_relative('./teacher')
+require_relative('./books')
+require_relative('./rental')
 
 class App
   def initialize
@@ -9,8 +10,55 @@ class App
     @books = []
   end
 
+  def options
+    puts '1 => List all book'
+    puts '2 => List all People'
+    puts '3 => Create a person'
+    puts '4 => Create a book'
+    puts '5 => Create a rental'
+    puts '6 => List all rentals for a given person id'
+    puts '7 => Exit'
+  end
 
-  def get_books
+  def check(option)
+    case option
+    when 1
+      fetch_books
+    when 2
+      fetch_people
+    when 3
+      create_person
+    when 4
+      create_book
+    when 5
+      create_rental
+    when 6
+      fetch_rentals
+    when 7
+      nil
+    else
+      puts 'Wrong value specified'
+      options
+    end
+  end
+
+  def run
+    puts
+    p 'School Library App!'
+    puts
+    option = nil
+    while option != 7
+      puts 'Please choose an option by entrering a number: '
+      options
+      print '[Input number]: '
+      option = gets.chomp.strip.to_i
+      check(option)
+      puts
+    end
+    puts 'GOOD BYE'
+  end
+
+  def fetch_books
     key = 0
     puts
     puts 'Books'
@@ -21,7 +69,7 @@ class App
     end
   end
 
-  def get_people
+  def fetch_people
     key = 0
     puts
     puts 'People'
@@ -96,10 +144,10 @@ class App
   end
 
   def create_rental
-    get_books
+    fetch_books
     print 'Select the key of the book: '
     book_select = gets.chomp.chomp.to_i
-    get_people
+    fetch_people
     print 'Select the key of the person: '
     person_select = gets.chomp.chomp.to_i
     print 'Select the date: (Year/Month/Day): '
@@ -111,9 +159,9 @@ class App
     puts
   end
 
-  def get_rentals
+  def fetch_rentals
     puts
-    get_people
+    fetch_people
     puts 'Choose Person ID?: '
     entry = gets.chomp.to_i
     puts 'Rentals'
@@ -127,3 +175,5 @@ class App
     end
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/ClassLength
