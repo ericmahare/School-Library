@@ -16,6 +16,3 @@ class Student < Person
     classroom.students.push(self) unless classroom.students.include?(self)
   end
 end
-
-tch = Student.new(30, 'CS')
-p tch.age
