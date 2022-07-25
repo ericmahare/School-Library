@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/CyclomaticComplexity
 require_relative('./person')
 require_relative('./capitalize_decorator')
 require_relative('./trimmer_decorator')
@@ -61,3 +62,4 @@ def display
 end
 
 display
+# rubocop:enable Metrics/CyclomaticComplexity

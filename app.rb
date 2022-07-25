@@ -6,6 +6,7 @@ require_relative('./create')
 
 class App < Create
   def initialize
+    super()
     @books = []
     @people = []
     @rentals = []
@@ -44,6 +45,7 @@ class App < Create
     puts 'Rentals'
     @people.each do |person|
       next unless person.id == entry
+
       person.rentals.each do |rental|
         puts "Date: #{rental.date} Book title: #{rental.book.title} by #{rental.book.author}"
         puts
